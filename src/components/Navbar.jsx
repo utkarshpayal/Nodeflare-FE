@@ -157,7 +157,51 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
               Docs
             </button>
            
-          
+              <div className="relative">
+      <button
+        className="px-4 py-2 bg-[#333] text-white rounded-lg"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        Account ▾
+      </button>
+
+      {isOpen && (
+        <div className="absolute right-0 mt-2 w-[160px] bg-white border border-gray-200 rounded-lg shadow-lg z-10 flex flex-col">
+         { !isLoggedIn ? <div>
+          <button
+            className="px-4 py-2 text-left text-black hover:bg-gray-100"
+            onClick={() => {
+              setIsOpen(false);
+              setIsLoggedIn(true);
+              navigate("/signin");
+            }}
+          >
+            Sign In
+          </button>
+          <button
+            className="px-4 py-2 text-black text-left hover:bg-gray-100"
+            onClick={() => {
+              setIsOpen(false);
+              navigate("/signup");
+            }}
+          >
+            Sign Up
+          </button>
+            </div> :
+          <button
+            className="px-4 py-2 text-left text-red-600 hover:bg-gray-100"
+            onClick={() => {
+              setIsOpen(false);
+              setIsLoggedIn(false); 
+              navigate("/");
+            }}
+          >
+            Logout
+          </button>
+}
+        </div>
+      )}
+    </div>
             {windowWidth <= 900 && (
               <button
                 className="px-4 bg-[#333] rounded-full"
