@@ -21,7 +21,7 @@ const Choose = () => {
   }, []);
 
   return (
-    <div className="md:w-screen flex flex-col items-center justify-center relative mb-[20vh] mt-[40vh]">
+    <div className="md:w-screen flex flex-col items-center justify-center relative mb-[12vh] md:mb-[20vh] mt-[10vh] md:mt-[40vh]">
       <img
         ref={pear}
         className="w-[100px] rotate-[15deg] hidden md:block absolute right-20 top-0"

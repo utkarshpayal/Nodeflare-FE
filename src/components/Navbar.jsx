@@ -144,7 +144,8 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
             ``
           )}
           <span className="flex gap-4">
-            <button
+            { windowWidth > 900 && <div className="flex gap-4">
+              <button
               className="py-2 w-[120px] linear--button text-[#000] rounded-lg"
               onClick={() => navigate("/")}
             >
@@ -155,7 +156,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
               onClick={() => navigate("/docs")}
             >
               Docs
-            </button>
+            </button></div>}
            
               <div className="relative">
       <button
