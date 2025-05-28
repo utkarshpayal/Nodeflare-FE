@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root {
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  overflow-x: hidden;
+}
+@font-face {
+  font-family: Del;
+  src: url("./Delirium.ttf");
+}
+@font-face {
+  font-family: Aquire;
+  src: url("./Aquire.otf");
+}
+@font-face {
+  font-family: Apercu;
+  src: url("./Apercu.woff2");
+}
+@font-face {
+  font-family: OldSchool;
+  src: url("./OldschoolGrotesk.woff2");
+}
+.del {
+  font-family: Del;
+}
+.aquire {
+  font-family: aquire;
+}
+.apercu {
+  font-family: Apercu;
+}
+.oldSchool {
+  font-family: OldSchool;
+}

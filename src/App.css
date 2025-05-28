@@ -1,0 +1,45 @@
+.notification-bar {
+  background: linear-gradient(to bottom, #222, #000);
+}
+.linear--button {
+  background: linear-gradient(155deg, #9aff4d, #4eb300);
+}
+.linear--button:hover {
+  background: linear-gradient(155deg, #4eb300, #9aff4d);
+}
+.gpu-animation {
+  animation: move 6s ease-out reverse infinite;
+}
+.gradient-text {
+  background: linear-gradient(to right, #d3c6ff 30%, #fefdff 50%, #d4ffb4 70%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.priceChart::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+
+.priceChart::-webkit-scrollbar-thumb {
+  background-color: #224f0f73;
+  border-radius: 10px;
+}
+li {
+  list-style: none;
+}
+.work--scrollbar::-webkit-scrollbar {
+  height: 0;
+  width: 0;
+}

@@ -1,0 +1,264 @@
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+function Signup() {
+  const [signupData, setSignupData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+    agreeTerms: false
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleSignupChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setSignupData(prev => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+    
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ''
+      }));
+    }
+  };
+
+  const validateSignup = () => {
+    const newErrors = {};
+    
+    if (!signupData.firstName.trim()) newErrors.firstName = 'First name is required';
+    if (!signupData.lastName.trim()) newErrors.lastName = 'Last name is required';
+    if (!signupData.email.trim()) {
+      newErrors.email = 'Email is required';
+    } else if (!/\S+@\S+\.\S+/.test(signupData.email)) {
+      newErrors.email = 'Email is invalid';
+    }
+    if (!signupData.password) {
+      newErrors.password = 'Password is required';
+    } else if (signupData.password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+    if (signupData.password !== signupData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+    if (!signupData.agreeTerms) {
+      newErrors.agreeTerms = 'You must agree to the terms and conditions';
+    }
+    
+    return newErrors;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = validateSignup();
+    
+    if (Object.keys(newErrors).length === 0) {
+      console.log('Signup submitted:', signupData);
+      alert('Account created successfully!');
+    } else {
+      setErrors(newErrors);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-black text-white relative overflow-hidden flex items-center justify-center px-4 py-12">
+      {/* Animated Background Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-20 w-96 h-96 border border-green-500 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 border border-green-400 rounded-full animate-pulse delay-700"></div>
+        <div className="absolute top-1/2 left-1/4 w-48 h-48 border border-green-600 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute top-1/3 right-1/3 w-64 h-64 border border-green-500 rounded-full animate-pulse delay-500"></div>
+      </div>
+
+      {/* Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-green-900/10 via-transparent to-green-800/5"></div>
+
+      {/* Main Content */}
+      <div className="relative z-10 w-full max-w-md">
+        {/* Form Container */}
+        <div className="bg-gray-900/90 backdrop-blur-xl border border-green-500/20 rounded-3xl p-8 shadow-2xl shadow-green-500/10 hover:shadow-green-500/20 transition-all duration-500">
+          <div className="text-center mb-8">
+            <div className="inline-block p-3 bg-green-500/10 rounded-full mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-green-600 rounded-full flex items-center justify-center">
+                <span className="text-black font-bold text-xl">H</span>
+              </div>
+            </div>
+            <h1 className="text-4xl font-bold mb-3 bg-gradient-to-r from-green-400 to-green-600 bg-clip-text text-transparent">
+              Join the Future
+            </h1>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Create your account to access the world's first<br />
+              <span className="text-green-400 font-semibold">P2P GPU marketplace</span>
+            </p>
+          </div>
+
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name Fields */}
+            <div className="grid grid-cols-2 gap-4">
+              <div className="group">
+                <label className="block text-sm font-medium mb-2 text-gray-300 group-focus-within:text-green-400 transition-colors">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  value={signupData.firstName}
+                  onChange={handleSignupChange}
+                  className={`w-full px-4 py-3 bg-gray-800/80 border rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 hover:bg-gray-800 placeholder-gray-500 ${
+                    errors.firstName ? 'border-red-500 ring-2 ring-red-500/20' : 'border-gray-700 hover:border-green-500/50'
+                  }`}
+                  placeholder="John"
+                />
+                {errors.firstName && (
+                  <p className="text-red-400 text-sm mt-1 animate-fade-in">{errors.firstName}</p>
+                )}
+              </div>
+              <div className="group">
+                <label className="block text-sm font-medium mb-2 text-gray-300 group-focus-within:text-green-400 transition-colors">
+                  Last Name
+                </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  value={signupData.lastName}
+                  onChange={handleSignupChange}
+                  className={`w-full px-4 py-3 bg-gray-800/80 border rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 hover:bg-gray-800 placeholder-gray-500 ${
+                    errors.lastName ? 'border-red-500 ring-2 ring-red-500/20' : 'border-gray-700 hover:border-green-500/50'
+                  }`}
+                  placeholder="Doe"
+                />
+                {errors.lastName && (
+                  <p className="text-red-400 text-sm mt-1 animate-fade-in">{errors.lastName}</p>
+                )}
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="group">
+              <label className="block text-sm font-medium mb-2 text-gray-300 group-focus-within:text-green-400 transition-colors">
+                Email Address
+              </label>
+              <input
+                type="email"
+                name="email"
+                value={signupData.email}
+                onChange={handleSignupChange}
+                className={`w-full px-4 py-3 bg-gray-800/80 border rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 hover:bg-gray-800 placeholder-gray-500 ${
+                  errors.email ? 'border-red-500 ring-2 ring-red-500/20' : 'border-gray-700 hover:border-green-500/50'
+                }`}
+                placeholder="john@example.com"
+              />
+              {errors.email && (
+                <p className="text-red-400 text-sm mt-1 animate-fade-in">{errors.email}</p>
+              )}
+            </div>
+
+            {/* Password */}
+            <div className="group">
+              <label className="block text-sm font-medium mb-2 text-gray-300 group-focus-within:text-green-400 transition-colors">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                value={signupData.password}
+                onChange={handleSignupChange}
+                className={`w-full px-4 py-3 bg-gray-800/80 border rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 hover:bg-gray-800 placeholder-gray-500 ${
+                  errors.password ? 'border-red-500 ring-2 ring-red-500/20' : 'border-gray-700 hover:border-green-500/50'
+                }`}
+                placeholder="••••••••"
+              />
+              {errors.password && (
+                <p className="text-red-400 text-sm mt-1 animate-fade-in">{errors.password}</p>
+              )}
+            </div>
+
+            {/* Confirm Password */}
+            <div className="group">
+              <label className="block text-sm font-medium mb-2 text-gray-300 group-focus-within:text-green-400 transition-colors">
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={signupData.confirmPassword}
+                onChange={handleSignupChange}
+                className={`w-full px-4 py-3 bg-gray-800/80 border rounded-xl focus:ring-2 focus:ring-green-500 focus:border-green-500 transition-all duration-300 hover:bg-gray-800 placeholder-gray-500 ${
+                  errors.confirmPassword ? 'border-red-500 ring-2 ring-red-500/20' : 'border-gray-700 hover:border-green-500/50'
+                }`}
+                placeholder="••••••••"
+              />
+              {errors.confirmPassword && (
+                <p className="text-red-400 text-sm mt-1 animate-fade-in">{errors.confirmPassword}</p>
+              )}
+            </div>
+
+            {/* Terms Agreement */}
+            <div className="space-y-2">
+              <div className="flex items-start space-x-3">
+                <input
+                  type="checkbox"
+                  name="agreeTerms"
+                  checked={signupData.agreeTerms}
+                  onChange={handleSignupChange}
+                  className="mt-1 w-5 h-5 text-green-500 bg-gray-800 border-gray-600 rounded-md focus:ring-green-500 focus:ring-2 transition-all"
+                />
+                <label className="text-sm text-gray-300 leading-relaxed">
+                  I agree to the{' '}
+                  <span className="text-green-400 hover:text-green-300 underline underline-offset-2 cursor-pointer transition-colors">
+                    Terms of Service
+                  </span>{' '}
+                  and{' '}
+                  <span className="text-green-400 hover:text-green-300 underline underline-offset-2 cursor-pointer transition-colors">
+                    Privacy Policy
+                  </span>
+                </label>
+              </div>
+              {errors.agreeTerms && (
+                <p className="text-red-400 text-sm animate-fade-in">{errors.agreeTerms}</p>
+              )}
+            </div>
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-black font-bold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-green-500/25 active:scale-[0.98]"
+            >
+              Create Account
+            </button>
+
+            {/* Sign In Link */}
+            <div className="text-center pt-2">
+              <p className="text-gray-400">
+                Already have an account?{' '}
+                <Link 
+                  to="/signin"
+                  className="text-green-400 hover:text-green-300 font-semibold transition-colors hover:underline underline-offset-2"
+                >
+                  Sign in
+                </Link>
+              </p>
+            </div>
+          </form>
+        </div>
+
+        {/* Additional Info */}
+        <div className="text-center mt-8">
+          <div className="inline-flex items-center space-x-2 bg-gray-900/50 backdrop-blur border border-green-500/20 rounded-full px-6 py-3">
+            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+            <p className="text-gray-400 text-sm">
+              Join <span className="text-green-400 font-semibold">10,000+</span> developers already using our P2P GPU network
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Signup;
