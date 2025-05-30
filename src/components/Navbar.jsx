@@ -55,6 +55,7 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
             >
               GPUs
             </Link>
+           
           </span>
           <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
             <Link
@@ -65,6 +66,15 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
               }`}
             >
               Serverless
+            </Link>
+                        <Link
+              to="/hyperrcompute/terminal"
+              onClick={handleMenuLinkClick}
+              className={`absolute delay-500 ease-in-out duration-1000 ${
+                menuOpen ? `top-[-10px]` : `top-20`
+              }`}
+            >
+              Terminal
             </Link>
           </span>
           <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
@@ -124,11 +134,18 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
               >
                 GPUs
               </Link>
+              
               <Link
                 className="hover:text-[#9aff4d]"
                 to="/hyperrcompute/serverless"
               >
                 Serverless
+              </Link>
+               <Link
+                className="hover:text-[#9aff4d]"
+                to="/hyperrcompute/terminal"
+              >
+                Terminal
               </Link>
               <Link
                 className="hover:text-[#9aff4d]"

@@ -14,6 +14,7 @@ import Docs from "./Pages/Docs";
 import Blog from "./Pages/Blog";
 import Signup from "./Pages/Signup";
 import Signin from "./Pages/Signin";
+import TerminalPage from "./Pages/TerminalPage";
 
 function App() {
   const locomotiveScroll = new LocomotiveScroll();
@@ -32,6 +33,7 @@ function App() {
           <Route path="/hyperrcompute/hosting" element={<Hosting />} />
           <Route path="/hyperrcompute/docs" element={<Docs />} />
           <Route path="/hyperrcompute/blogs" element={<Blog />} />
+          <Route path="/hyperrcompute/terminal" element={<TerminalPage /> } />
         </Routes>
         <Footer />
       </BrowserRouter>
