@@ -6,10 +6,13 @@ const Pricing = () => {
     <div className="flex flex-col items-center gap-4 mt-[20vh] relative">
       <div className="w-screen h-[300px] bg-[#70f04230] blur-[100px] absolute left-0 top-[20%] rotate-[-15deg]"></div>
       <div className="w-[400px] h-[400px] bg-[#ea42f034] blur-[100px] absolute right-0 bottom-[50px]"></div>
-      <h1 className="text-[3rem] font-bold flex flex-col md:flex-row items-center text-center gap-4 leading-[5vh] md:leading-none uppercase">
-        <span className="gradient-text leading-[6vh]">Hyperrcompute GPU</span> Pricing
-      </h1>
 
+      <div className="w-full px-4 overflow-hidden">
+        <h1 className="text-[2.2rem] sm:text-[3rem] font-bold flex flex-col md:flex-row items-center text-center gap-0 md:gap-4 uppercase leading-tight justify-center  break-words">
+          <span className="gradient-text text-center">Hyperrcompute GPU</span>
+          <span className="text-center">Pricing</span>
+        </h1>
+      </div>
       <p className="text-center w-[90%] md:w-auto">
         Powerful & cost-effective GPUs built to support any workload. GPUs are
         billed <br /> by the minute. No fees for ingress/egress.
