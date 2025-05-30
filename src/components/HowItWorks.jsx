@@ -4,7 +4,7 @@ const HowItWorks = () => {
       <div className="w-[800px] h-[400px] bg-[#ff0ceb23] blur-[40px] rounded-full absolute z-[-1] left-16"></div>
       <div className="w-[400px] h-[400px] bg-[#85ff0c29] blur-[40px] rounded-full absolute top-[40%] right-10 z-[-1]"></div>
 
-      <h1 className="gradient-text leading-[6vh] text-[3rem] uppercase font-bold">
+      <h1 className="gradient-text leading-[6vh] text-[3rem] uppercase font-bold text-center">
         How It Works
       </h1>
       <div className="my-10 flex flex-wrap justify-center gap-10">
@@ -35,57 +35,58 @@ const setup = [
     heading: "Setup Docker",
     icon: "./docker.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Install Docker on your system to enable containerized execution of compute tasks.",
   },
   {
     title: "hyperrcompute",
     heading: "Install hyperrcompute",
     icon: "./docker.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Download and configure the hyperrcompute CLI to manage and access GPU resources.",
   },
   {
     title: "payment",
     heading: "Enter Payment Info",
     icon: "./card.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Provide your payment details securely to enable billing and resource allocation.",
   },
   {
     title: "docker",
     heading: "All Set",
     icon: "./check.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Your environment is successfully configured. You are now ready to start.",
   },
   {
     title: "search",
     heading: "User Searches GPU",
     icon: "./search.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Users can search and select available GPU resources based on performance and pricing.",
   },
   {
     title: "invoice",
     heading: "Generate an Invoice for given minutes",
     icon: "./couple.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "The system calculates and generates an invoice based on GPU usage duration.",
   },
   {
     title: "payment",
-    heading: "Recieve Payment",
+    heading: "Receive Payment",
     icon: "./card.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Vendors receive payment automatically after successful resource usage and verification.",
   },
   {
     title: "Done",
     heading: "Done",
     icon: "./check.png",
     description:
-      "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed voluptate placeat laborum.",
+      "Process completed successfully. You can now access reports or continue operations.",
   },
 ];
+
 
 export default HowItWorks;

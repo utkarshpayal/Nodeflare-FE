@@ -21,16 +21,14 @@ const Payment = () => {
       <p className="uppercase text-[#ffe700] text-[12px]">
         embrace soverign payments
       </p>
-      <h1 className="text-[2rem] capitalize">You can pay in Satoshi</h1>
+      <h1 className="text-[2rem] capitalize text-center">You can pay in Satoshi</h1>
       <p className="font-bold text-[18px] mt-10">1 Satoshi = 0.00000001 BTC</p>
       <div className="flex flex-col items-center gap-6 w-[90%] md:w-[40%] my-[50px] px-10 py-6 ring-[0.5px] ring-[#a600ff] rounded-2xl backdrop-blur-md bg-[#00000010]">
         <h1 className="text-[1.5rem] leading-[4vh] font-bold">
           Spin Up and Pay with Lightning Network Payment.
         </h1>
         <p className="text-justify">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima eos,
-          possimus error architecto rem repellendus dignissimos quidem accusamus
-          quis culpa
+         The Lightning Network enables Bitcoin users to make fast, secure, and micro-scale payments with minimal transaction fees. By leveraging off-chain transactions, the network reduces congestion on the Bitcoin blockchain, providing near-instant confirmations and making it ideal for everyday purchases, tipping, or international remittances.
         </p>
         <button
           className="py-2 w-full bg-[#bf48ff] font-bold rounded-lg"

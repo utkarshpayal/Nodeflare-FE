@@ -153,12 +153,12 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
             </button>
             <button
               className="py-2 px-4 ring-1 text-[#9aff4d] ring-[#9aff4d] rounded-lg"
-              onClick={() => navigate("/docs")}
+              onClick={() => navigate("/hyperrcompute/docs")}
             >
               Docs
             </button></div>}
            
-              <div className="relative">
+              {/* <div className="relative">
       <button
         className="px-4 py-2 bg-[#333] text-white rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
@@ -202,10 +202,10 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
 }
         </div>
       )}
-    </div>
+    </div> */}
             {windowWidth <= 900 && (
               <button
-                className="px-4 bg-[#333] rounded-full"
+                className="px-4 py-1 bg-[#333] rounded-full"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
                 <img className="w-[20px]" src="/menu.png" alt="menu icon" />
@@ -228,12 +228,12 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
 
           <p>Lightning Payment: More Power, less cost!</p>
           <p className="font-thin">|</p>
-          <p
+          <a
             className="font-bold cursor-pointer"
-            onClick={() => alert("Clicked Learn more")}
+            href="https://lightning.network/"
           >
             Learn more
-          </p>
+          </a>
         </div>
       </div>
     </>

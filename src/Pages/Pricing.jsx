@@ -6,10 +6,10 @@ const Pricing = () => {
     <div className="flex flex-col items-center gap-4 mt-[20vh] relative">
       <div className="w-screen h-[300px] bg-[#70f04230] blur-[100px] absolute left-0 top-[20%] rotate-[-15deg]"></div>
       <div className="w-[400px] h-[400px] bg-[#ea42f034] blur-[100px] absolute right-0 bottom-[50px]"></div>
-      <h1 className="text-[3rem] font-bold flex flex-col leading-[5vh] md:leading-none md:flex-row items-center text-center gap-4 uppercase">
-        <h1 className="gradient-text leading-[6vh]">Hyperrcompute GPU</h1>{" "}
-        Pricing
+      <h1 className="text-[3rem] font-bold flex flex-col md:flex-row items-center text-center gap-4 leading-[5vh] md:leading-none uppercase">
+        <span className="gradient-text leading-[6vh]">Hyperrcompute GPU</span> Pricing
       </h1>
+
       <p className="text-center w-[90%] md:w-auto">
         Powerful & cost-effective GPUs built to support any workload. GPUs are
         billed <br /> by the minute. No fees for ingress/egress.
@@ -32,8 +32,8 @@ const Pricing = () => {
           </p>
           <div className="flex items-center  justify-between flex-wrap mt-6">
             <span className="flex gap-2 items-center">
-            <img src="/pear.png" className="w-[20px]" alt="Pear icon" />
-            <p>Zero fees for ingress/egress</p>
+              <img src="/pear.png" className="w-[20px]" alt="Pear icon" />
+              <p>Zero fees for ingress/egress</p>
             </span>
             <span className="flex gap-2 items-center">
               <img src="/pear.png" className="w-[20px]" alt="Pear icon" />
@@ -47,7 +47,7 @@ const Pricing = () => {
               <img src="/pear.png" className="w-[20px]" alt="Pear icon" />
               <p>$0.05/GB/month Network Storage</p>
             </span>
-           
+
           </div>
         </div>
         <hr className="border-[#234f0f] my-10" />
@@ -87,12 +87,12 @@ const Pricing = () => {
                     <div className="flex gap-10 items-center">
                       <span>
                         <p className="text-[12px] font-bold flex items-center gap-1">
-                        <img className="w-[10px] rotate-[-90deg]" src="/right-arrow.png" alt="Arrow" />
+                          <img className="w-[10px] rotate-[-90deg]" src="/right-arrow.png" alt="Arrow" />
 
                           {gpu.uploadSpeed}
                         </p>
                         <p className="text-[12px] font-bold flex items-center gap-1">
-                        <img className="w-[10px] rotate-[90deg]" src="/right-arrow.png" alt="Arrow" />
+                          <img className="w-[10px] rotate-[90deg]" src="/right-arrow.png" alt="Arrow" />
 
                           {gpu.downloadSpeed}
                         </p>
@@ -118,8 +118,8 @@ const Pricing = () => {
                   </div>
                   <div>
                     <p className="text-[14px] flex items-center gap-1">
-                    <img className="w-[14px]" src="/flash.png" alt="Flash Icon" />
-                    {gpu.price}
+                      <img className="w-[14px]" src="/flash.png" alt="Flash Icon" />
+                      {gpu.price}
                     </p>
                     <button className="py-1 w-full linear--button text-[#000] rounded-[6px] font-bold">
                       Rent
