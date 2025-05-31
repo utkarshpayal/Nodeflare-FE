@@ -64,8 +64,8 @@ function ContainerAccess() {
     }
 
     try {
-      const response = await fetch("http://localhost:3000/containers/remove", {
-        method: "DELETE",
+      const response = await fetch("http://localhost:3000/containers/stop", {
+        method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ id: containerId }),
       });
@@ -118,6 +118,40 @@ function ContainerAccess() {
       setShowStatusModal(true);
     }
   };
+
+const downloadLogs = async () => {
+  if (!containerId) {
+    setStatusMessage("Please enter a container ID first.");
+    return;
+  }
+
+  try {
+    const response = await fetch(
+      `http://localhost:3000/containers/logs?id=${containerId}`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch logs");
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+
+    a.href = url;
+    a.download = `container-logs-${containerId}.txt`; // filename
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+
+    setStatusMessage("Logs downloaded successfully.");
+  } catch (error) {
+    console.error("Error downloading logs:", error);
+    setContainerStatus({ error: "Error in downloading!" });
+    setShowStatusModal(true);
+  }
+};
 
   const addTerminal = () => {
     if (!containerId) {
@@ -495,6 +529,60 @@ function ContainerAccess() {
             </svg>
             Container Status
           </button>
+
+      <button
+  onClick={downloadLogs}
+  disabled={!containerId}
+  style={{
+    backgroundColor: containerId ? "#1f2937" : "#2a2a2a",
+    color: containerId ? "#e5e7eb" : "#6b7280",
+    border: "1px solid",
+    borderColor: containerId ? "#4b5563" : "#374151",
+    borderRadius: "12px",
+    padding: "10px 18px",
+    fontWeight: 600,
+    fontSize: "14px",
+    cursor: containerId ? "pointer" : "not-allowed",
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    transition: "all 0.2s ease",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
+    boxShadow: containerId
+      ? "0 2px 4px rgba(0,0,0,0.1)"
+      : "none",
+  }}
+  onMouseEnter={(e) => {
+    if (containerId) {
+      e.currentTarget.style.backgroundColor = "#374151";
+      e.currentTarget.style.transform = "translateY(-2px)";
+    }
+  }}
+  onMouseLeave={(e) => {
+    if (containerId) {
+      e.currentTarget.style.backgroundColor = "#1f2937";
+      e.currentTarget.style.transform = "translateY(0)";
+    }
+  }}
+>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+  Download Logs
+</button>
+
         </div>
 
         {statusMessage && (
