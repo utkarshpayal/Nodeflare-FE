@@ -1,19 +1,41 @@
 import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
+import PaymentFailedModal from "../components/PaymentFailedModal";
+import CopyModal from "../components/CopyModal";
 const ServerLess = () => {
   const navigate = useNavigate();
+  const [isPaid, setIsPaid] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [connector, setConnector] = useState("demo_key");
+  const [showSpinner, setShowSpinner] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpinner(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  const handleRent = () => {
+    setShowSpinner(true);
+
+    setTimeout(() => {
+      setShowSpinner(false);
+      setIsPaid(true);  // Open modal only after spinner is hidden
+    }, 3000);
+  };
+  if (showSpinner) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="flex flex-col items-center gap-4 mt-[20vh] relative ">
       <div className="w-screen h-[300px] bg-[#70f04230] blur-[100px] absolute left-0 top-[20%] rotate-[-15deg]"></div>
       <div className="w-[400px] h-[400px] bg-[#ea42f034] blur-[100px] absolute right-0 bottom-[50px]"></div>
 
-     <div className="w-full px-4 overflow-hidden">
-  <h1 className="text-[2.2rem] sm:text-[3rem] font-bold flex flex-col md:flex-row items-center text-center gap-0 md:gap-4 uppercase leading-tight justify-center  break-words">
-    <span className="gradient-text text-center">Hyperrcompute Serverless</span>
-    <span className="text-center">Pricing</span>
-  </h1>
-</div>
+      <div className="w-full px-4 overflow-hidden">
+        <h1 className="text-[2.2rem] sm:text-[3rem] font-bold flex flex-col md:flex-row items-center text-center gap-0 md:gap-4 uppercase leading-tight justify-center  break-words">
+          <span className="gradient-text text-center">Hyperrcompute Serverless</span>
+          <span className="text-center">Pricing</span>
+        </h1>
+      </div>
 
       <p className="text-center">
         Powerful & cost-effective Servers built to support any workload. Servers
@@ -127,7 +149,7 @@ const ServerLess = () => {
                       <img className="w-[14px]" src="/flash.png"></img>
                       {gpu.price}
                     </p>
-                    <button className="py-1 w-full linear--button text-[#000] rounded-[6px] font-bold">
+                    <button className="py-1 w-full linear--button text-[#000] rounded-[6px] font-bold" onClick={handleRent}>
                       Rent
                     </button>
                   </div>
@@ -136,6 +158,21 @@ const ServerLess = () => {
             );
           })}
         </div>
+      </div>
+      {/* payment fail modal */}
+      <PaymentFailedModal
+        isOpen={errorModal}
+        onClose={() => setErrorModal(false)}
+      />
+      {/* copy modal */}
+      <div className="flex items-center justify-center">
+        {!showSpinner && (
+          <CopyModal
+            isOpen={isPaid}
+            onClose={() => setIsPaid(false)}
+            secretKey={connector}
+          />
+        )}
       </div>
     </div>
   );

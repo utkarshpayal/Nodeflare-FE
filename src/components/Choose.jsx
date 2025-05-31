@@ -2,10 +2,13 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect } from "react";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Choose = () => {
+  const navigate = useNavigate();
+
   const pear = useRef(null);
 
   useLayoutEffect(() => {
@@ -35,7 +38,7 @@ const Choose = () => {
       <h1 className="text-[2rem] text-center capitalize max-w-[90%]">
         Find The Perfect GPU For Your AI/ML Need.
       </h1>
-      <button className="py-[10px] px-8 linear--button text-[#000] text-[13px] font-bold rounded-lg my-4">
+      <button className="py-[10px] px-8 linear--button text-[#000] text-[13px] font-bold rounded-lg my-4" onClick={()=> navigate("/hyperrcompute/docs") }>
         Check out the CLI docs
       </button>
       <div className="flex flex-wrap justify-center items-center w-full mt-5 gap-10">

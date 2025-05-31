@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Hosting = () => {
+  const [showSpinner, setShowSpinner] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpinner(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (showSpinner) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div className="w-full px-4 py-[10vh] flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background image */}

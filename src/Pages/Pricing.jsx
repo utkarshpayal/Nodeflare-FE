@@ -1,7 +1,33 @@
 import { useNavigate } from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import CopyModal from "../components/CopyModal";
+import PaymentFailedModal from "../components/PaymentFailedModal";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Pricing = () => {
   const navigate = useNavigate();
+  const [isPaid, setIsPaid] = useState(false);
+  const [errorModal, setErrorModal] = useState(false);
+  const [connector, setConnector] = useState("demo_key");
+  const [showSpinner, setShowSpinner] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpinner(false), 3000);
+    return () => clearTimeout(timer);
+  }, []);
+  
+  const handleRent = () => {
+    setShowSpinner(true);
+
+    setTimeout(() => {
+      setShowSpinner(false);
+      setIsPaid(true);  // Open modal only after spinner is hidden
+    }, 3000);
+  };
+
+
+  if (showSpinner) {
+    return <LoadingSpinner />;
+  }
+
   return (
     <div className="flex flex-col items-center gap-4 mt-[20vh] relative">
       <div className="w-screen h-[300px] bg-[#70f04230] blur-[100px] absolute left-0 top-[20%] rotate-[-15deg]"></div>
@@ -124,16 +150,37 @@ const Pricing = () => {
                       <img className="w-[14px]" src="/flash.png" alt="Flash Icon" />
                       {gpu.price}
                     </p>
-                    <button className="py-1 w-full linear--button text-[#000] rounded-[6px] font-bold">
+                    <button className="py-1 w-full linear--button text-[#000] rounded-[6px] font-bold" onClick={handleRent}>
                       Rent
                     </button>
+
+
+
+
                   </div>
                 </div>
               </div>
             );
           })}
         </div>
+
       </div>
+      {/* payment fail modal */}
+      <PaymentFailedModal
+        isOpen={errorModal}
+        onClose={() => setErrorModal(false)}
+      />
+      {/* copy modal */}
+      <div className="flex items-center justify-center">
+        {!showSpinner && (
+          <CopyModal
+            isOpen={isPaid}
+            onClose={() => setIsPaid(false)}
+            secretKey={connector}
+          />
+        )}
+      </div>
+
     </div>
   );
 };

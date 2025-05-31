@@ -43,3 +43,7 @@ li {
   height: 0;
   width: 0;
 }
+/* Tailwind utility example for smooth fade + slide */
+.translate-y-10 {
+  transform: translateY(2.5rem); /* 10 * 0.25rem */
+}

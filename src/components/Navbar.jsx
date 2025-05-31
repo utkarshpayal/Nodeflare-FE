@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login status
+  //   const [isOpen, setIsOpen] = useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = useState(false); 
   const navigate = useNavigate();
   const handleMenuLinkClick = () => {
     setMenuOpen(false);
@@ -24,101 +24,100 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
   return (
     <>
       <div
-        className={`menu fixed bg-[#000] z-[999] duration-1000 ease-in-out w-screen  ${
-          menuOpen ? `h-screen` : `h-0 overflow-hidden pointer-events-none`
-        }`}
+        className={`menu fixed bg-[#000] z-[999] duration-1000 ease-in-out w-screen  ${menuOpen ? `h-screen` : `h-0 overflow-hidden pointer-events-none`
+          }`}
       >
         <div
-          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#0c51ff59] rounded-full right-0 top-[20%] pointer-events-none blur-[40px] ${
-            menuOpen ? `opacity-1` : `opacity-0`
-          }`}
+          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#0c51ff59] rounded-full right-0 top-[20%] pointer-events-none blur-[40px] ${menuOpen ? `opacity-1` : `opacity-0`
+            }`}
         ></div>
         <div
-          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#ff0c0c59] rounded-full right-40 top-[30%] pointer-events-none blur-[40px] ${
-            menuOpen ? `opacity-1` : `opacity-0`
-          }`}
+          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#ff0c0c59] rounded-full right-40 top-[30%] pointer-events-none blur-[40px] ${menuOpen ? `opacity-1` : `opacity-0`
+            }`}
         ></div>
         <div
-          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#0cff1859] rounded-full right-20 top-[50%] pointer-events-none blur-[40px] ${
-            menuOpen ? `opacity-1` : `opacity-0`
-          }`}
+          className={`w-[200px] h-[200px] md:w-[400px] md:h-[400px] duration-500 delay-500 absolute bg-[#0cff1859] rounded-full right-20 top-[50%] pointer-events-none blur-[40px] ${menuOpen ? `opacity-1` : `opacity-0`
+            }`}
         ></div>
         <h1>Menu</h1>
-        <div className="h-[100%] flex flex-col justify-center gap-2 px-10 text-[3rem] sm:text-[4rem] md:text-[5rem] uppercase">
-          <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
+        <div className="h-[100%] flex flex-col justify-start pt-20 gap-2 px-10 text-[3rem] sm:text-[4rem] md:text-[5rem] uppercase">
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
             <Link
               to="/hyperrcompute/pricing"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               GPUs
             </Link>
-           
+
           </span>
-          <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
             <Link
               to="/hyperrcompute/serverless"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               Serverless
             </Link>
-                        <Link
+
+          </span>
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
+            <Link
               to="/hyperrcompute/terminal"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               Terminal
             </Link>
           </span>
-          <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
             <Link
               to="/hyperrcompute/hosting"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               Hosting
             </Link>
           </span>
-          <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
             <Link
               to="/hyperrcompute/blogs"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               Blog
             </Link>
           </span>
-          <span className="h-[3rem] sm:h-[4rem] md:h-[5rem] flex items-center relative overflow-hidden">
+          <span className="h-[2.5rem] sm:h-[3.5rem] md:h-[4.5rem] flex items-center relative overflow-hidden">
             <Link
               to="/hyperrcompute/docs"
               onClick={handleMenuLinkClick}
-              className={`absolute delay-500 ease-in-out duration-1000 ${
-                menuOpen ? `top-[-10px]` : `top-20`
-              }`}
+              className={`delay-500 ease-in-out duration-1000 ${menuOpen ? `translate-y-0 opacity-100` : `translate-y-10 opacity-0`
+                }`}
             >
               Docs
             </Link>
           </span>
           <button
-            className="linear--button text-[2rem] text-[#000] w-fit px-4 py-2 mt-10 uppercase rounded-lg"
+            className={`linear--button text-[2rem] text-[#000] w-fit px-4 py-2 mt-10 uppercase rounded-lg transition-opacity duration-1000 ease-in-out
+    ${menuOpen ? 'translate-y-0 opacity-100 delay-[1100ms]' : ' opacity-0 '}
+  `}
             onClick={() => {
               setMenuOpen(false);
-              navigate("/");
+              setTimeout(() => {
+                navigate("/");
+              }, 500);
             }}
           >
             Get Started
           </button>
+
+
         </div>
       </div>
       <div className="sticky top-0 backdrop-blur-lg z-[1000]">
@@ -134,14 +133,14 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
               >
                 GPUs
               </Link>
-              
+
               <Link
                 className="hover:text-[#9aff4d]"
                 to="/hyperrcompute/serverless"
               >
                 Serverless
               </Link>
-               <Link
+              <Link
                 className="hover:text-[#9aff4d]"
                 to="/hyperrcompute/terminal"
               >
@@ -161,21 +160,21 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
             ``
           )}
           <span className="flex gap-4">
-            { windowWidth > 900 && <div className="flex gap-4">
+            {windowWidth > 900 && <div className="flex gap-4">
               <button
-              className="py-2 w-[120px] linear--button text-[#000] rounded-lg"
-              onClick={() => navigate("/")}
-            >
-              Get Started
-            </button>
-            <button
-              className="py-2 px-4 ring-1 text-[#9aff4d] ring-[#9aff4d] rounded-lg"
-              onClick={() => navigate("/hyperrcompute/docs")}
-            >
-              Docs
-            </button></div>}
-           
-              {/* <div className="relative">
+                className="py-2 w-[120px] linear--button text-[#000] rounded-lg"
+                onClick={() => navigate("/")}
+              >
+                Get Started
+              </button>
+              <button
+                className="py-2 px-4 ring-1 text-[#9aff4d] ring-[#9aff4d] rounded-lg"
+                onClick={() => navigate("/hyperrcompute/docs")}
+              >
+                Docs
+              </button></div>}
+
+            {/* <div className="relative">
       <button
         className="px-4 py-2 bg-[#333] text-white rounded-lg"
         onClick={() => setIsOpen(!isOpen)}
@@ -231,11 +230,10 @@ const [isLoggedIn, setIsLoggedIn] = useState(false); // State to manage login st
           </span>
         </nav>
         <div
-          className={`notification-bar overflow-hidden transition-all duration-500 ease-in-out text-[10px] sm:text-[14px] text-[#CBCCD1] flex items-center justify-center gap-4 w-full bg-purple-100 py-2 ring-[0.5px] ring-[#444] ${
-            menuOpen
-              ? "max-h-0 opacity-0 pointer-events-none"
-              : "max-h-[100px] opacity-100"
-          }`}
+          className={`notification-bar overflow-hidden transition-all duration-500 ease-in-out text-[10px] sm:text-[14px] text-[#CBCCD1] flex items-center justify-center gap-4 w-full bg-purple-100 py-2 ring-[0.5px] ring-[#444] ${menuOpen
+            ? "max-h-0 opacity-0 pointer-events-none"
+            : "max-h-[100px] opacity-100"
+            }`}
         >
           <img
             className="w-[25px] p-2 rounded-full bg-[#444]"

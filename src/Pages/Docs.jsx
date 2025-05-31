@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Search, Book, Code, Zap, Server, Shield } from "lucide-react";
-
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Docs = () => {
   const sections = [
     {
@@ -28,6 +29,14 @@ const Docs = () => {
       links: ["Authentication", "Encryption", "Access Control"]
     }
   ];
+const [showSpinner, setShowSpinner] = useState(true)
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpinner(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+  if (showSpinner) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">

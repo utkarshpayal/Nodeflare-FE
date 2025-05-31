@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Calendar, User, ArrowRight, TrendingUp } from "lucide-react";
-
+import { useEffect, useState } from "react";
+import LoadingSpinner from "../components/LoadingSpinner";
 const Blog = () => {
   const featuredPost = {
     title: "The Future of Decentralized GPU Computing",
@@ -12,10 +13,21 @@ const Blog = () => {
 
   const blogPosts = [/* same as before */];
   const categories = ["All", "Tutorial", "Analysis", "Security", "Guide", "Use Case", "Benchmark"];
+  const [showSpinner, setShowSpinner] = useState(true)
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSpinner(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  
+  if (showSpinner) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="min-h-screen bg-black text-white">
-     
+
 
       <div className="container mx-auto px-8 py-12">
         <div className="text-center mb-16">
