@@ -118,6 +118,41 @@ function ContainerAccess() {
       setShowStatusModal(true);
     }
   };
+const downloadContainerBackup = async (containerId) => {
+  if (!containerId) {
+    alert("Please provide a container ID.");
+    return;
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/containers/backup", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id: containerId }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || "Failed to download backup.");
+    }
+
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${containerId}.zip`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error("Backup download error:", error.message);
+    alert("Failed to download backup: " + error.message);
+  }
+};
 
 const downloadLogs = async () => {
   if (!containerId) {
@@ -480,6 +515,42 @@ const downloadLogs = async () => {
             </svg>
             Stop Container
           </button>
+<button
+  onClick={() => downloadContainerBackup(containerId)}
+  disabled={!containerId}
+  style={{
+    backgroundColor: containerId ? "#1f2937" : "#2a2a2a",
+    color: containerId ? "#e0e0e0" : "#666",
+    border: containerId ? "1px solid #4b5563" : "1px solid #2a2a2a",
+    borderRadius: "12px",
+    padding: "12px 20px",
+    fontWeight: "600",
+    fontSize: "14px",
+    cursor: containerId ? "pointer" : "not-allowed",
+    display: "flex",
+    alignItems: "center",
+    transition: "all 0.3s ease",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
+  }}
+>
+  <svg
+    style={{ marginRight: "8px" }}
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+  Backup Container
+</button>
 
           <button
             onClick={fetchContainerStatus}
